@@ -2,11 +2,11 @@
 
 A C# REST API for text encryption and decryption using Caesar Cipher, featuring a complete CI/CD pipeline with GitHub Actions and AWS Elastic Beanstalk deployment.
 
-## 📋 Project Overview
+## Project Overview:
 
 This project demonstrates a full CI/CD workflow for a .NET 8 Web API with automated testing, building, and deployment to AWS.
 
-## 🚀 Features
+## Features:
 
 - **Encryption Endpoint**: Encrypt text using Caesar Cipher
 - **Decryption Endpoint**: Decrypt text encrypted with Caesar Cipher
@@ -14,8 +14,9 @@ This project demonstrates a full CI/CD workflow for a .NET 8 Web API with automa
 - **CI/CD Pipeline**: Automated deployment using GitHub Actions
 - **Unit Tests**: Comprehensive test coverage
 - **AWS Deployment**: Hosted on AWS Elastic Beanstalk
+- **Automated CI/CD**: GitHub Actions pipeline for testing and deployment
 
-## 🛠️ Tech Stack
+## Tech Stack:
 
 - .NET 8
 - ASP.NET Core Web API
@@ -24,7 +25,7 @@ This project demonstrates a full CI/CD workflow for a .NET 8 Web API with automa
 - AWS Elastic Beanstalk
 - xUnit (for testing)
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### Encrypt Text
 ```http
@@ -62,7 +63,7 @@ Content-Type: application/json
 }
 ```
 
-## 🏃‍♂️ Running Locally
+## Running Locally
 
 1. Clone the repository:
 ```bash
@@ -82,12 +83,12 @@ curl -X POST http://localhost:5059/api/encryption/encrypt \
   -d '{"text":"Hello","shift":3}'
 ```
 
-## 🧪 Running Tests
+## Running Tests
 ```bash
 dotnet test
 ```
 
-## 📦 CI/CD Workflow
+## CI/CD Workflow
 
 This project uses **Git Flow** branching strategy:
 
@@ -97,11 +98,10 @@ This project uses **Git Flow** branching strategy:
 
 All code is merged via Pull Requests with automated testing before deployment.
 
-## 👤 Author
+## Author:
 
 **Djan Karis Lomongo Freolo**
 - GitHub: [@shiizuunee](https://github.com/shiizuunee)
 
-## 📄 License
-
+## License:
 This project is created for educational purposes as part of a CI/CD course examination.
