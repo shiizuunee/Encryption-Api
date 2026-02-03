@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Encryption-Api</title>
+</head>
+<body>
+    <h1>Caesar-chiffer</h1>
+    
+    <p>Meddelande:</p>
+    <textarea id="text" rows="3" cols="40"></textarea>
+    
+    <p>Skiftning:</p>
+    <input type="number" id="shift" value="3">
+    
+    <p>
+        <button onclick="encrypt()">Kryptera</button>
+        <button onclick="decrypt()">Avkryptera</button>
+    </p>
+    
+    <p id="result"></p>
+
+    <script>
+        async function encrypt() { await callAPI('encrypt'); }
+        async function decrypt() { await callAPI('decrypt'); }
+        
+        async function callAPI(action) {
+            const text = document.getElementById('text').value;
+            const shift = document.getElementById('shift').value;
+            
+            const response = await fetch(`/api/encryption/${action}`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({text, shift: Number(shift)})
+            });
+            
+            const data = await response.json();
+            document.getElementById('result').textContent = 'Resultat: ' + data.result;
+        }
+    </script>
+</body>
+</html>
