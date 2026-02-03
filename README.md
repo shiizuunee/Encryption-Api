@@ -10,11 +10,11 @@ This project demonstrates a full CI/CD workflow for a .NET 8 Web API with automa
 
 - **Encryption Endpoint**: Encrypt text using Caesar Cipher
 - **Decryption Endpoint**: Decrypt text encrypted with Caesar Cipher
+- **Simple Web Interface**: HTML frontend for easy testing
 - **RESTful API**: Clean API design with proper HTTP methods
 - **CI/CD Pipeline**: Automated deployment using GitHub Actions
 - **Unit Tests**: Comprehensive test coverage
 - **AWS Deployment**: Hosted on AWS Elastic Beanstalk
-- **Automated CI/CD**: GitHub Actions pipeline for testing and deployment
 
 ## Tech Stack:
 
@@ -25,9 +25,19 @@ This project demonstrates a full CI/CD workflow for a .NET 8 Web API with automa
 - AWS Elastic Beanstalk
 - xUnit (for testing)
 
+## Frontend
+
+A simple HTML interface is available at the root URL:
+- Text input for messages
+- Number input for shift value
+- Encrypt and Decrypt buttons
+- Displays results directly on the page
+
+Access at: `http://localhost:5059/`
+
 ## API Endpoints
 
-### Encrypt Text
+### Encrypt Text:
 ```http
 POST /api/encryption/encrypt
 Content-Type: application/json
@@ -45,7 +55,7 @@ Content-Type: application/json
 }
 ```
 
-### Decrypt Text
+### Decrypt Text:
 ```http
 POST /api/encryption/decrypt
 Content-Type: application/json
@@ -77,16 +87,20 @@ dotnet run
 ```
 
 3. Test the API:
-```bash
-curl -X POST http://localhost:5059/api/encryption/encrypt \
-  -H "Content-Type: application/json" \
-  -d '{"text":"Hello","shift":3}'
-```
+- **Web Interface**: http://localhost:5059/
+- **API Endpoints**:
+  - POST http://localhost:5059/api/encryption/encrypt
+  - POST http://localhost:5059/api/encryption/decrypt
 
 ## Running Tests
 ```bash
 dotnet test
 ```
+
+**Test Coverage:**
+- Encrypt and decrypt with valid input
+- Error handling with empty text
+- Preserve non-letters
 
 ## CI/CD Workflow
 
@@ -97,6 +111,22 @@ This project uses **Git Flow** branching strategy:
 - `feature/*` - Feature branches
 
 All code is merged via Pull Requests with automated testing before deployment.
+
+### Continuous Integration (CI)
+- Runs on: Push/PR to `development` and `main`
+- Steps: Checkout → Stepup .NET → Restore → Build → Test
+- Result: Tests must pass before merge
+
+### Continuous Deployment (CD)
+- Runs on: Push to `main` only
+- Steps: Build → Publish → Package → Deploy to AWS
+- Result: Automatic deployment to AWS Elastic Beanstalk 
+
+## AWS Development
+
+**Live URL**: http://encryption-api-env.eba-72pz5h9f.eu-north-1.elasticbeanstalk.com 
+
+The application is automatically deployed to AWS Elastic Beanstalk when code is merged to the `main` branch.
 
 ## Author:
 
